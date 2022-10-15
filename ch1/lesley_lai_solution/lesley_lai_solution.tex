@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,fancyvrb}
+\usepackage{mathpartir}
+
+\begin{document}
+
+PFPL \hfill Chapter 1 Exercise\\
+Lesley Lai
+
+\hrulefill
+
+\begin{enumerate}
+\item[1.1] Prove by structural induction on abstract syntax trees that if $\mathcal{X} \subseteq \mathcal{Y}$, then $\mathcal{A}[\mathcal{X}] \subseteq \mathcal{A}[\mathcal{Y}]$\\
+
+
+\begin{proof}
+
+\textit{Any variables in $\mathcal{A}[\mathcal{X}]$ is also a valid variable in $\mathcal{A}[\mathcal{Y}]$ since $\mathcal{X} \subseteq \mathcal{Y}$. And for the inductive case, Let $o(a_1, \cdots, a_n)$ be a valid AST in $\mathcal{A}[\mathcal{X}]$. If $a_1 \in \mathcal{A}[\mathcal{X}], \cdots a_n \in \mathcal{A}[\mathcal{X}]$, by induction hypothesis $a_1 \in \mathcal{A}[\mathcal{Y}], \cdots a_n \in \mathcal{A}[\mathcal{Y}]$, which means that $o(a_1, \cdots, a_n)$ is also a valid AST in $\mathcal{A}[\mathcal{Y}]$. Thus, by structural induction, if $\mathcal{X} \subseteq \mathcal{Y}$, then $\mathcal{A}[\mathcal{X}] \subseteq \mathcal{A}[\mathcal{Y}]$.}
+
+\end{proof}
+
+
+\end{enumerate}
+
+\end{document}

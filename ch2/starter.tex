@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,fancyvrb}
+\usepackage{mathpartir}
+
+% Helpful macros
+\newcommand{\mt}[1]{\ensuremath{\text{#1}}}
+\newcommand{\isA}[2]{\ensuremath{#1 \; #2}}
+\newcommand{\isANat}[1]{\isA{#1}{\mt{nat}}}
+\newcommand{\zero}{\mt{zero}}
+\newcommand{\mySucc}[1]{\mt{succ}(#1)}
+
+
+%% Judgments
+
+
+\begin{document}
+
+PFPL \hfill Chapter 2 Exercise\\
+Your Name
+
+\hrulefill
+
+\subsection*{Questions}
+
+\begin{enumerate}
+\item[2.1] Give an inductive definition of the judgment $\text{max}(m;n;p)$ where $\isANat{m}, \isANat{n}, \isANat{p}$, with the meaning that $p$ is the larger of $m$ and $n$. Prove that every $m$ and $n$ are related to a unique $p$ by this judgment.
+
+TODO
+
+\item[2.5] Give an inductive definition of the \textit{binary natural numbers}, which are either zero, twice a binary number, or one more than twice a binary number. The size of such a representation is logarithmic, rather than linear, in the natural number it represents.
+
+TODO
+
+\item[2.6] Give an inductive definition of addition of binary natural numbers as defined in Exercise \textbf{2.5}.\\ \textit{Hint:} Proceed by analyzing both arguments to the addition, and make use of an auxiliary function to compute the successor of a binary number. Hint: Alternatively, define both the sum and the sum-plus-one of two binary numbers mutually recursively.
+
+TODO
+
+\end{enumerate}
+
+\subsection*{Appendix}
+Here is an example latex typesetting of an inductive definition. You can copy/paste and modify this code. After finishing all the exercises, feel free to delete this section.
+
+\begin{mathpar}
+\inferrule{
+}{
+    \isANat{\zero}
+}
+
+\inferrule{
+    \isANat{n}
+}{
+    \isANat{\mySucc{n}}
+}
+\end{mathpar}
+
+
+\end{document}
