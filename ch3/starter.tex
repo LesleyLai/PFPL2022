@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsthm,amsfonts,amssymb,fancyvrb}
+\usepackage{mathpartir}
+
+% Helpful macros
+\newcommand{\mt}[1]{\ensuremath{\text{#1}}}
+\newcommand{\isA}[2]{\ensuremath{#1 \; #2}}
+\newcommand{\isANat}[1]{\isA{#1}{\mt{nat}}}
+\newcommand{\zero}{\mt{zero}}
+\newcommand{\mySucc}[1]{\mt{succ}(#1)}
+
+
+%% Judgments
+
+
+\begin{document}
+
+PFPL \hfill Chapter 3 Exercise\\
+Your Name
+
+\hrulefill
+
+\subsection*{Questions}
+
+\begin{enumerate}
+\item[3.1] \textit{Combinators} are inductively defined by the rule set $C$ given as follows:
+
+\newcommand{\comb}{\mt{comb}}
+\newcommand{\isComb}[1]{\isA{#1}{\comb}}
+\newcommand{\length}[1]{\mt{length}(#1)}
+
+
+\begin{mathpar}
+\inferrule{
+}{
+    \isComb{s}
+}
+
+\inferrule{
+}{
+    \isComb{k}
+}
+
+\inferrule{
+    \isComb{a_1}\quad\isComb{a_2}
+}{
+    \isComb{\text{ap}(a_1; a_2)}
+}
+\end{mathpar}
+
+Give an inductive definition of the \textit{length} of a combinator defined as the number of occurrences of $S$ and $K$ within it.
+
+TODO
+
+\item[3.2] The general judgment
+$$
+x_1, \ldots, x_n \mid \isComb{x_1}, \ldots, \isComb{x_n} \vdash_{\mathcal{C}} \isComb{A}
+$$
+states that $A$ is a combinator that may involve the variables $x_1, \ldots, x_n$. Prove that if $x \mid \isComb{x} \vdash_{\mathcal{C}} \isComb{a_2}$ and $\isComb{a_1}$, then $\left[a_1 / x\right] a_2$ comb by induction on the derivation of the first hypothesis of the implication.
+
+TODO
+
+\newpage
+
+\item[3.3] Conversion, or equivalence, of combinators is expressed by the judgment $A \equiv B$ defined by the rule set $\mathcal{E}$ extending $\mathcal{C}$ as follows: \footnote{The combinator $\isComb{\text{ap}(a_1; a_2)}$ is written $a_1 \, a_2$ for short, left-associatively when used in succession.}
+
+\begin{mathpar}
+\inferrule{\isComb{a}}{a \equiv a} \\
+\inferrule{a_2 \equiv a_1}{a_1 \equiv a_2} \\
+\inferrule{a_1 \equiv a_2 \quad a_2 \equiv a_3}{a_1 \equiv a_3} \\
+\inferrule{a_1 \equiv a_1^{\prime} \quad a_2 \equiv a_2^{\prime}}{a_1 a_2 \equiv a_1^{\prime} a_2^{\prime}} \\
+\inferrule{\isComb{a_1} \quad \isComb{a_2}}{\mathrm{k} a_1 a_2 \equiv a_1} \\
+\inferrule{\isComb{a_1} \quad \isComb{a_2} \quad \isComb{a_3}}{s \, a_1 \, a_2 \, a_3 \equiv\left(a_1 a_3\right)\left(a_2 a_3\right)}
+\end{mathpar}
+
+The no-doubt mysterious motivation for the last two equations will become clearer in a moment. For now, show that
+$$
+x \mid \isComb{x} \vdash_{\mathcal{C} \cup \mathcal{E}} s \ k \ k \ x \equiv x .
+$$
+
+ TODO
+ 
+ \newpage
+ 
+ \item[3.4]Show that if $x \mid \isComb{x}\vdash_{\mathcal{C}} \isComb{a}$, then there is a combinator $a^{\prime}$, written $[x]\,a$ and called bracket abstraction, such that
+$$
+x \mid \isComb{x} \vdash_{\mathcal{C} \cup \mathcal{E}} a^{\prime} x \equiv a .
+$$
+
+Consequently, by Exercise $3.2$, if $\isComb{a''}$, then
+$$
+([x] \, a) \; a'' \equiv\left[a'' / x\right] a
+$$
+
+Hint: Inductively define the judgment
+$$
+x \mid \isComb{x} \vdash \text{abs}_x \ a \text { is } a',
+$$
+where $x \mid \isComb{x} \vdash \isComb{a}$. Then argue that it defines $a'$ as a binary function of $x$ and $a$. The motivation for the conversion axioms governing $\mathrm{k}$ and $\mathrm{s}$ should become clear while developing the proof of the desired equivalence.
+
+TODO
+
+\item[3.5] Prove that bracket abstraction, as defined in Exercise 3.4, is non-compositional by exhibiting $a$ and $b$ such that $\isComb{a}$ and
+$$
+x \ y \mid \isComb{x} \ \isComb{y} \vdash_{\mathcal{C}} \isComb{b}$$
+such that $[a / y]([x] \, b) \neq[x] \, ([a / y] b)$. Hint: Consider the case that $b$ is $y$.
+Suggest a modification to the definition of bracket abstraction that is compositional by showing under the same conditions given above that
+$$
+[a / y]([x]\, b)=[x]\,([a / y]b) .
+$$
+
+TODO
+
+\end{enumerate}
+
+\newpage
+
+\subsection*{Appendix}
+Here is an example latex typesetting of an inductive definition. You can copy/paste and modify this code. After finishing all the exercises, feel free to delete this section.
+
+\begin{mathpar}
+\inferrule{
+}{
+    \isANat{\zero}
+}
+
+\inferrule{
+    \isANat{n}
+}{
+    \isANat{\mySucc{n}}
+}
+\end{mathpar}
+
+You can nest \textbackslash inferrule* for derivation tree.
+For example:
+
+\begin{mathpar}
+\inferrule*{
+\inferrule*{
+  \text {empty tree} \text {empty tree}
+}{
+  \text {node}(\text {empty;empty}) \text{ tree}
+}
+\quad
+\text {empty tree}
+}
+{
+\text {node}( \text {node}(\text {empty;empty}); \text{empty}) \text{ tree}
+}
+\end{mathpar} 
+
+
+\end{document}
