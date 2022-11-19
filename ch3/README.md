@@ -25,4 +25,4 @@ For latex, please upload both the source and a pdf file.
 Looking forward to seeing everyones solutions!
 
 ## Exercises
-For chapter 3 we will do the following exercises: 3.1
+For chapter 3 we will do the following exercises: 3.1 - 3.5
